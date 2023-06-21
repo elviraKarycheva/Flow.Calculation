@@ -22,7 +22,7 @@ class CalculationViewModel @Inject constructor(
     private val calculationUseCase: CalculationUseCase,
 ) : ViewModel() {
 
-    private val mutableState by lazy { MutableStateFlow(createInitialState()) }
+    private val mutableState = MutableStateFlow(createInitialState())
     val viewState get() = mutableState.asStateFlow()
 
     private var calculationJob: Job? = null
@@ -59,9 +59,9 @@ class CalculationViewModel @Inject constructor(
 
         calculationJob?.cancel()
         calculationJob = calculationUseCase.getCalculationFlow(currentDigit)
-            .onEach {
+            .onEach { number ->
                 updateState { state ->
-                    val currentSum = state.currentSum + it
+                    val currentSum = state.currentSum + number
                     val newSumResult = "${state.calculationResult} $currentSum"
                     state.copy(
                         calculationResult = newSumResult,
@@ -71,7 +71,9 @@ class CalculationViewModel @Inject constructor(
             }.launchIn(viewModelScope)
     }
 
-    private fun updateState(update: (CalculationUiState) -> CalculationUiState) = mutableState.update(update)
+    private fun updateState(update: (CalculationUiState) -> CalculationUiState) {
+        mutableState.update(update)
+    }
 
     @Parcelize
     private class SavedState(
