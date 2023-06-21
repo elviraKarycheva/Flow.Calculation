@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Flow Calculation"
-include ':app'
+include (":app")
