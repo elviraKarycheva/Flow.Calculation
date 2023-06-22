@@ -50,7 +50,7 @@ android {
 dependencies {
     implementation("androidx.core:core-ktx:1.10.1")
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.1")
     implementation("androidx.activity:activity-compose:1.7.2")
     implementation(platform("androidx.compose:compose-bom:2022.10.00"))
     implementation("androidx.compose.ui:ui")
@@ -66,8 +66,8 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:2.44.2")
 
     testImplementation("junit:junit:4.13.2")
-    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
-    testImplementation ("app.cash.turbine:turbine:1.0.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
+    testImplementation("app.cash.turbine:turbine:1.0.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation(platform("androidx.compose:compose-bom:2022.10.00"))
     debugImplementation("androidx.compose.ui:ui-tooling")

@@ -22,13 +22,14 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.flowcalculation.R
 
 @Composable
 fun CalculationScreen(
     viewModel: CalculationViewModel = hiltViewModel(),
 ) {
-    val state = viewModel.viewState.collectAsState()
+    val state = viewModel.viewState.collectAsStateWithLifecycle()
     CalculationContent(
         state = state.value,
         onDigitValueChanged = { viewModel.onTextChanged(it) },
